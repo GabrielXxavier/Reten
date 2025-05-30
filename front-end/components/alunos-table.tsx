@@ -10,7 +10,6 @@ import { ExportCSV } from "@/components/export-csv"
 export async function AlunosTable() {
   const alunos = await fetchAlunosEmRisco()
 
-  // Ordenar por probabilidade de churn (do maior para o menor)
   const alunosOrdenados = [...alunos].sort((a, b) => b.Prob_Churn - a.Prob_Churn)
 
   return (
@@ -19,7 +18,6 @@ export async function AlunosTable() {
         <h2 className="text-2xl font-bold tracking-tight">Alunos em Risco de Desistência</h2>
         <div className="flex items-center gap-2">
           <ExportCSV alunos={alunosOrdenados} />
-          <Button size="sm">Ações em Massa</Button>
         </div>
       </div>
       <div className="rounded-lg border bg-card">
@@ -65,13 +63,24 @@ export async function AlunosTable() {
                   <div className="flex justify-end gap-2">
                     <Button size="icon" variant="ghost">
                       <Mail className="h-4 w-4" />
-                      <span className="sr-only">Enviar email</span>
+                      <span ><a
+  href={`mailto:${aluno.Email}?subject=Olá%20${encodeURIComponent(aluno.Nome)}%20-%20Sentimos%20sua%20falta&body=${encodeURIComponent(
+    `Olá, ${aluno.Nome}!
+
+  Notamos que sua frequência na academia diminuiu nos últimos tempos — e queremos dizer que sentimos sua falta por aqui! 🏋️‍♀️
+
+  Sabemos que a rotina pode ser puxada, mas desistir dos seus objetivos não precisa ser uma opção. Pensando nisso, preparamos um desconto especial só     pra você, como um incentivo pra voltar com tudo!
+
+  Você não está sozinho nessa jornada. Conte com a gente para te motivar e alcançar seus resultados!
+
+  Vamos juntos?
+  Equipe FitLife`
+  )}`}
+  >
+  Email
+</a></span>
                     </Button>
-                    <Button size="icon" variant="ghost">
-                      <Phone className="h-4 w-4" />
-                      <span className="sr-only">Ligar</span>
-                    </Button>
-                    <AlunoDetailDialog aluno={aluno}>
+                                       <AlunoDetailDialog aluno={aluno}>
                       <Button size="icon" variant="ghost">
                         <Eye className="h-4 w-4" />
                         <span className="sr-only">Ver detalhes</span>

@@ -22,12 +22,10 @@ interface AlunoDetailDialogProps {
 }
 
 export function AlunoDetailDialog({ children, aluno }: AlunoDetailDialogProps) {
-  // Traduzir os códigos para texto
   const genero = aluno.Genero === 1 ? "Masculino" : "Feminino"
   const objetivo = getObjetivo(aluno.Objetivo)
   const plano = getPlano(aluno.Plano)
 
-  // Calcular o nível de risco
   const risco = aluno.Prob_Churn * 100
   const riscoLabel = risco >= 30 ? "Alto" : risco >= 25 ? "Médio" : "Baixo"
   const riscoColor = risco >= 30 ? "bg-red-500" : risco >= 25 ? "bg-amber-500" : "bg-green-500"

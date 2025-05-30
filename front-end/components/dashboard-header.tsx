@@ -30,23 +30,9 @@ export function DashboardHeader() {
             <span className="text-xl font-bold tracking-tight">FitRetain</span>
           </div>
         </div>
-        <div className="hidden md:flex md:flex-1 md:items-center md:justify-center">
-          <div className="relative w-full max-w-md">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              type="search"
-              placeholder="Buscar alunos..."
-              className="w-full bg-background pl-8 md:w-[300px] lg:w-[400px]"
-            />
-          </div>
-        </div>
+        
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-rose-500" />
-            <span className="sr-only">Notificações</span>
-          </Button>
-          <ThemeToggle />
+                   <ThemeToggle />
         </div>
       </div>
     </header>

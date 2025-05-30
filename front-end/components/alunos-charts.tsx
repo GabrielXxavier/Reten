@@ -4,54 +4,40 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 export default function Charts() {
-  const optionsRisco = { series: [{
-              data: [25, 2, 7, 17]
-            }],
-            options: {
-              chart: {
-                height: 350,
-                type: 'bar',
-                events: {
-                  click: function(chart, w, e) {
-                    // console.log(chart, w, e)
-                  }
-                }
-              },
-              theme : 'dark',
-              colors: 'red',
-              plotOptions: {
-                bar: {
-                  columnWidth: '45%',
-                  distributed: true,
-                }
-              },
-              dataLabels: {
-                enabled: false
-              },
-
-              legend: {
-                show: true
-              },
-              xaxis: {
-                categories: [
-                  ['John', 'Doe'],
-                  ['Joe', 'Smith'],
-                  ['Jake', 'Williams'],
-                  'Amber',
-                  ['Peter', 'Brown'],
-                  ['Mary', 'Evans'],
-                  ['David', 'Wilson'],
-                  ['Lily', 'Roberts'], 
-                ],
-                labels: {
-                  style: {
-                    colors: 'red',
-                    fontSize: '12px'
-                  }
-                }
-              }
-            },
-          }    
+ const optionsRisco = {
+  series: [{
+    data: [25, 2, 7, 17]
+  }],
+  chart: {
+    height: 350,
+    type: 'bar',
+  },
+   colors: ['#22c55e', '#facc15', '#ef4444', '#b91c1c'], 
+   plotOptions: {
+    bar: {
+      columnWidth: '45%',
+      distributed: true,
+    }
+  },
+  dataLabels: {
+    enabled: true,
+    style: {
+      colors: ['#fff']
+    }
+  },
+  legend: {
+    show: false
+  },
+  xaxis: {
+    categories: ['Baixo Risco', 'Médio Risco', 'Alto Risco', 'Muito Alto Risco'],
+    labels: {
+      style: {
+        colors: ['#22c55e', '#facc15', '#ef4444', '#b91c1c'],
+        fontSize: '14px'
+      }
+    }
+  }
+}  
   const optionsGeral = {
    series: [26,174],
           chart: {

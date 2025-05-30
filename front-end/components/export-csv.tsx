@@ -9,7 +9,6 @@ interface ExportCSVProps {
 
 export function ExportCSV({ alunos }: ExportCSVProps) {
   const exportToCSV = () => {
-    // Cabeçalhos do CSV
     const headers = [
       "ID",
       "Nome",
@@ -27,7 +26,6 @@ export function ExportCSV({ alunos }: ExportCSVProps) {
       "Probabilidade de Churn"
     ]
 
-    // Mapear os dados para o formato CSV
     const csvData = alunos.map((aluno) => [
       aluno.ID,
       aluno.Nome,
@@ -45,13 +43,10 @@ export function ExportCSV({ alunos }: ExportCSVProps) {
       (aluno.Prob_Churn * 100).toFixed(1) + "%"
     ])
 
-    // Adicionar cabeçalhos ao início
     csvData.unshift(headers)
 
-    // Converter para string CSV
     const csvString = csvData.map(row => row.join(",")).join("\n")
 
-    // Criar blob e link para download
     const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" })
     const link = document.createElement("a")
     const url = URL.createObjectURL(blob)
